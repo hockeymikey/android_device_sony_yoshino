@@ -24,10 +24,6 @@ PRODUCT_PACKAGES += \
     init.yoshino.pwr \
     init.qcom.early_boot.sh
 
-# LiveDisplay native
-PRODUCT_PACKAGES += \
-    vendor.lineage.livedisplay@1.0-service-sdm
-
 DEVICE_PACKAGE_OVERLAYS += \
     $(PLATFORM_PATH)/overlay
 

@@ -17,7 +17,8 @@
 ### USB
 PRODUCT_PROPERTY_OVERRIDES += \
     sys.usb.controller=a800000.dwc3 \
-    sys.usb.rndis.func.name=gsi
+    sys.usb.rndis.func.name=gsi \
+    persist.sys.usb.config.extra=none
 
 # OpenGLES version
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -230,3 +231,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # CAMERA
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.camera.HAL3.enabled=1
+
+# DISPLAY_HDR
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.qcom.hdr.config=/vendor/etc/hdr_tm_config.xml
