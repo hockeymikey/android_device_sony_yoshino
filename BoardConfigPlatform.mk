@@ -42,6 +42,7 @@ ENABLE_CPUSETS := true
 ### KERNEL
 TARGET_KERNEL_VERSION := 4.4
 TARGET_KERNEL_SOURCE  := kernel/sony/msm8998
+TARGET_COMPILE_WITH_MSM_KERNEL := true
 
 BOARD_KERNEL_CMDLINE += androidboot.bootdevice=1da4000.ufshc
 BOARD_KERNEL_CMDLINE += display_status=on
