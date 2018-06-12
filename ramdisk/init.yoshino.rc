@@ -108,6 +108,9 @@ on post-fs
     # start clearpad_post_probe when filesystem is available for fwflash
     write /sys/devices/virtual/input/clearpad/post_probe_start 1
 
+    # configure the modem
+    start modem_switcher
+
 on post-fs-data
     # create directory for wfd
     mkdir /data/wfd 0770 system system
@@ -214,12 +217,6 @@ on boot
     chown cameraserver cameraserver /dev/cpuset/camera-daemon/tasks
     chmod 0660 /dev/cpuset/camera-daemon/tasks
 
-    # Update foreground cpuset now that processors are up
-    write /dev/cpuset/foreground/cpus 0-7
-    write /dev/cpuset/foreground/boost/cpus 0-7
-    write /dev/cpuset/background/cpus 0
-    write /dev/cpuset/system-background/cpus 0-1
-
     # Tof sensor
     chown cameraserver camera /dev/i2c-8
     chmod 666 /dev/i2c-8
@@ -323,6 +320,13 @@ service cacaoserver /system/bin/cacaoserver
     group audio camera input drmrpc
     ioprio rt 4
     writepid /dev/cpuset/camera-daemon/tasks /dev/stune/top-app/tasks
+
+service modem_switcher /vendor/bin/sony-modem-switcher
+    class main
+    user root
+    group root system trimarea cache
+    disabled
+    oneshot
 
 # QCOM Quick Charge
 service hvdcp_opti /vendor/bin/hvdcp_opti
