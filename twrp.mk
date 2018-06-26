@@ -67,9 +67,6 @@ TW_INCLUDE_CRYPTO := true
 # ext4 file based crypto
 TW_INCLUDE_CRYPTO_FBE := true
 
-# Add predecrypt
-TARGET_RECOVERY_DEVICE_MODULES      += predecrypt.sh
-
 # Add strace
 TARGET_RECOVERY_DEVICE_MODULES      += strace
 TW_RECOVERY_ADDITIONAL_RELINK_FILES += $(OUT)/system/xbin/strace
@@ -86,3 +83,7 @@ TW_EXCLUDE_SUPERSU := true
 TW_EXTRA_LANGUAGES := true
 
 TW_THEME := portrait_hdpi
+
+# Use a future date for the security patchlevel.  As TWRP doesn't do key
+# upgrades it should just be fine using it for decryption.
+PLATFORM_SECURITY_PATCH := 2025-12-31
